@@ -1,4 +1,4 @@
-Rocket League Stats Analyzer 
+## Rocket League Stats Analyzer
 
 A simple Python app that analyzes Rocket League player performance data. This project uses **SQLAlchemy**, **Pandas**, and **Streamlit** to visualize player stats from a local SQLite database.
 
