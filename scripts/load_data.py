@@ -8,20 +8,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from db.models import Base, PlayerStats
 
-# Step 1: Set up database connection
 engine = create_engine("sqlite:///stats.db")
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-print("Loading mock data into the database...")
-# Step 2: Load JSON data
+print("Loading mock data into the database.")
 with open("data/mock_data.json") as f:
     data = json.load(f)
 
-# Step 3: Add each record to the DB
 for entry in data:
-    print(f"Inserting {entry['player']} into the database...")
+    print(f"Inserting {entry['player']} into the database.")
     stat = PlayerStats(
         player=entry["player"],
         goals=entry["goals"],
@@ -32,8 +29,7 @@ for entry in data:
     )
     session.add(stat)
 
-# Step 4: Commit and close session
 session.commit()
 session.close()
 
-print("✅ Data loaded into stats.db")
+print("Data loaded into stats.db")
